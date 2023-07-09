@@ -76,3 +76,11 @@ clj꞉koans.24-macros꞉> 
 (clojure.string/split-lines "1\n2\n3")
 ["1" "2" "3"]
 clj꞉koans.24-macros꞉> 
+(= 0 (string/index-of "hello world" __))
+; Syntax error compiling at (output.calva-repl:79:6).
+; No such namespace: string
+clj꞉koans.24-macros꞉> 
+(= 0 (clojure.string/index-of "hello world" __))
+; Syntax error compiling at (output.calva-repl:83:6).
+; Unable to resolve symbol: __ in this context
+clj꞉koans.24-macros꞉> 

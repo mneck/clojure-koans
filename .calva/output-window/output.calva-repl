@@ -87,3 +87,9 @@ clj꞉koans.24-macros꞉> 
 (conj '(:a :b :c :d) :e)
 (:e :a :b :c :d)
 clj꞉koans.03-lists꞉> 
+(into {}
+           (map
+            (fn [[k v]] [k (inc v)])
+            {:a 1 :b 2}))
+{:a 2, :b 3}
+clj꞉koans.06-maps꞉> 

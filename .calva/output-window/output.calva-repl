@@ -84,3 +84,6 @@ clj꞉koans.24-macros꞉> 
 ; Syntax error compiling at (output.calva-repl:83:6).
 ; Unable to resolve symbol: __ in this context
 clj꞉koans.24-macros꞉> 
+(conj '(:a :b :c :d) :e)
+(:e :a :b :c :d)
+clj꞉koans.03-lists꞉> 

@@ -93,3 +93,20 @@ clj꞉koans.03-lists꞉> 
             {:a 1 :b 2}))
 {:a 2, :b 3}
 clj꞉koans.06-maps꞉> 
+ (let [x 5]
+    (= :your-road (cond (= x 3) :road-not-taken
+                        (= x 4) :another-road-not-taken
+                        :else (x))))
+false
+clj꞉koans.09-higher-order-functions꞉> 
+(let [x 5]
+    (= :your-road (cond (= x 3) :road-not-taken
+                        (= x 4) :another-road-not-taken
+                        :else (x))))
+; Execution error (ClassCastException) at koans.09-higher-order-functions/eval8692 (form-init18256891937650387935.clj:105).
+; class java.lang.Long cannot be cast to class clojure.lang.IFn (java.lang.Long is in module java.base of loader 'bootstrap'; clojure.lang.IFn is in unnamed module of loader 'app')
+clj꞉koans.09-higher-order-functions꞉> 
+(let [x 5]
+    (= :your-road (cond (= x 3) :road-not-taken
+                        (= x 4) :another-road-not-taken
+                        :else true)))

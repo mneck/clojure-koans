@@ -110,3 +110,78 @@ clj꞉koans.09-higher-order-functions꞉> 
     (= :your-road (cond (= x 3) :road-not-taken
                         (= x 4) :another-road-not-taken
                         :else true)))
+false
+clj꞉koans.09-higher-order-functions꞉> 
+(filter (fn [x] true) '(:anything :goes :here))
+(:anything :goes :here)
+clj꞉koans.09-higher-order-functions꞉> 
+  (= (:anything :goes :here) (filter (fn [x] true) '(:anything :goes :here)))
+false
+clj꞉koans.09-higher-order-functions꞉> 
+ (= (:anything :goes :here) (filter (fn [x] true) '(:anything :goes :here)))
+false
+clj꞉koans.09-higher-order-functions꞉> 
+(= true :anything)
+false
+clj꞉koans.09-higher-order-functions꞉> 
+ (= () (filter (fn [x] true) '(:anything :goes :here)))
+false
+clj꞉koans.09-higher-order-functions꞉> 
+ (= (nil nil nil) (filter (fn [x] true) '(:anything :goes :here)))
+; Syntax error (IllegalArgumentException) compiling at (output.calva-repl:130:5).
+; Can't call nil, form: (nil nil nil)
+clj꞉koans.09-higher-order-functions꞉> 
+ (= (nil) (filter (fn [x] true) '(:anything :goes :here)))
+; Syntax error (IllegalArgumentException) compiling at (output.calva-repl:134:5).
+; Can't call nil, form: (nil)
+clj꞉koans.09-higher-order-functions꞉> 
+ (= nil (filter (fn [x] true) '(:anything :goes :here)))
+false
+clj꞉koans.09-higher-order-functions꞉> 
+ (= false (filter (fn [x] true) '(:anything :goes :here)))
+false
+clj꞉koans.09-higher-order-functions꞉> 
+ (= true (filter (fn [x] true) '(:anything :goes :here)))
+false
+clj꞉koans.09-higher-order-functions꞉> 
+  (= [10 20 30] (filter (fn [x] (30)) [10 20 30 40 50 60 70 80]))
+; Execution error (ClassCastException) at koans.09-higher-order-functions/eval8733$fn (form-init18256891937650387935.clj:147).
+; class java.lang.Long cannot be cast to class clojure.lang.IFn (java.lang.Long is in module java.base of loader 'bootstrap'; clojure.lang.IFn is in unnamed module of loader 'app')
+clj꞉koans.09-higher-order-functions꞉> 
+  (= [10 20 30] (filter (fn [x] (10 20 30)) [10 20 30 40 50 60 70 80]))
+; Execution error (ClassCastException) at koans.09-higher-order-functions/eval8738$fn (form-init18256891937650387935.clj:151).
+; class java.lang.Long cannot be cast to class clojure.lang.IFn (java.lang.Long is in module java.base of loader 'bootstrap'; clojure.lang.IFn is in unnamed module of loader 'app')
+clj꞉koans.09-higher-order-functions꞉> 
+  (= [10 20 30] (filter (fn [x] 10) [10 20 30 40 50 60 70 80]))
+false
+clj꞉koans.09-higher-order-functions꞉> 
+  (= [10 20 30] (filter (fn [x] 10 20 30) [10 20 30 40 50 60 70 80]))
+false
+clj꞉koans.09-higher-order-functions꞉> 
+  (= [10 20 30] (filter (fn [x] even?) [10 20 30 40 50 60 70 80]))
+false
+clj꞉koans.09-higher-order-functions꞉> 
+(filter (fn [x] 10 20 30) [10 20 30 40 50 60 70 80])
+(10 20 30 40 50 60 70 80)
+clj꞉koans.09-higher-order-functions꞉> 
+(filter (fn [x] 10) [10 20 30 40 50 60 70 80])
+(10 20 30 40 50 60 70 80)
+clj꞉koans.09-higher-order-functions꞉> 
+(filter (fn [x] [10 20 30]) [10 20 30 40 50 60 70 80])
+(10 20 30 40 50 60 70 80)
+clj꞉koans.09-higher-order-functions꞉> 
+  (= [10 20 30] (map (fn [x] (* x 10)) (filter (fn [x] (< x 31)) [1 2 3 4 5 6 7 8])))
+false
+clj꞉koans.09-higher-order-functions꞉> 
+(map (fn [x] (* x 10)) (filter (fn [x] (< x 31)) [1 2 3 4 5 6 7 8]))
+(10 20 30 40 50 60 70 80)
+clj꞉koans.09-higher-order-functions꞉> 
+(map (fn [x] (* x 10)) (filter (fn [x] (< x 4)) [1 2 3 4 5 6 7 8]))
+(10 20 30)
+clj꞉koans.09-higher-order-functions꞉> 
+(reduce (fn [a b]
+                         (if (< a b) b a))
+                       ["which" "word" "is" "longest"])
+; Execution error (ClassCastException) at koans.09-higher-order-functions/eval8785$fn (form-init18256891937650387935.clj:183).
+; class java.lang.String cannot be cast to class java.lang.Number (java.lang.String and java.lang.Number are in module java.base of loader 'bootstrap')
+clj꞉koans.09-higher-order-functions꞉> 
